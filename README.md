@@ -8,7 +8,7 @@
     <!-- CONNECT WIDGET SCRIPT FILE -->
     <script src="script.js"></script>
   ```
-- use widget as show below
+- use widget as showт below
    ```
    <script>
       window.onload = function () {
