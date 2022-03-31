@@ -13,7 +13,7 @@
 
   <div data-nickname="foo">
     {your markup}
-  <div />
+  </div>
   ```
 - use widget as showт below
    ```
