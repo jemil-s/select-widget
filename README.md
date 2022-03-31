@@ -8,6 +8,13 @@
     <!-- CONNECT WIDGET SCRIPT FILE -->
     <script src="script.js"></script>
   ```
+- elements to which add widget should contain data attribute `data-nickname` with value set to nickname 
+  ```HTML
+
+  <div data-nickname="foo">
+    {your markup}
+  <div />
+  ```
 - use widget as showт below
    ```
    <script>
