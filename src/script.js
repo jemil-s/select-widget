@@ -21,8 +21,6 @@ class SelectWidget {
 
   showInput = (e) => {
     e.stopPropagation();
-    console.log("click");
-    console.log("click 2", e.currentTarget);
     this.isInputFocused = true;
     this.selectedEmployee = e.currentTarget;
     this.removeElementById("widget-input-wrapper");
@@ -66,6 +64,8 @@ class SelectWidget {
       "widget-options rounded shadow bg-white overflow-hidden hidden peer-checked:flex flex-col w-full mt-1 border border-gray-200"
     );
     div.style.width = "100%";
+    div.style.height = "300px";
+    div.style.overflow = "scroll"
 
     this.nicknames.forEach((nickname) => {
       const innerDiv = document.createElement("div");
