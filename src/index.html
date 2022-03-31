@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- JIT SUPPORT, for using peer-* below -->
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     <!-- CONNECT WIDGET SCRIPT FILE -->
@@ -13,14 +13,45 @@
   </head>
   <body>
     <div style="display: flex; flex-direction: column">
-      <div class="widget-employee max-w-lg h-10 cursor-pointer">employee 1</div>
-      <div class="widget-employee max-w-lg h-10 cursor-pointer">employee 2</div>
-      <div class="widget-employee max-w-lg h-10 cursor-pointer">employee 3</div>
-      <div class="widget-employee max-w-lg h-10 cursor-pointer">employee 4</div>
-      <div class="widget-employee max-w-lg h-10 cursor-pointer">employee 5</div>
-      <div class="widget-employee max-w-lg h-10 cursor-pointer">employee 6</div>
+      <div class="max-w-lg h-10 cursor-pointer" data-nickname="frodo">
+        <div>
+          <div>
+            <div><div>frodo</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-lg h-10 cursor-pointer" data-nickname="aragorn">
+        <div>
+          <div>
+            <div><div>aragorn</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-lg h-10 cursor-pointer" data-nickname="merry">
+        <div>
+          <div>
+            <div><div>merry</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-lg h-10 cursor-pointer" data-nickname="celeborn">
+        <div>
+          <div>
+            <div><div>celeborn</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-lg h-10 cursor-pointer" data-nickname="balin">
+        <div>
+          <div>
+            <div>
+              <div>balin</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- ELEMENTS WITH EMPLOYEE SHOULD HAVE "widget-employee" class -->
+    <!-- ELEMENTS SHOULD HAVE "data-nickname" ATTRIBUTE WITH VALUE SET TO NICKNAME -->
 
     <!-- START WIDGET -->
     <script>
@@ -41,7 +72,7 @@
           "Summer Smith",
         ];
 
-        const endpoint = "http://localhost:4000";
+        const endpoint = "http://localhost:4000/nickname";
 
         const widget = new SelectWidget(nicknames, endpoint);
         widget.start();

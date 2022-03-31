@@ -1,15 +1,14 @@
 class SelectWidget {
-  constructor(nicknames, endpoint, width = "100px") {
+  constructor(nicknames, endpoint) {
     this.nicknames = nicknames;
     this.isInputFocused = false;
     this.selectedEmployee = undefined;
     this.selectedInput = undefined;
-    this.employees = document.getElementsByClassName("widget-employee");
-    this.dataAttributeName = "data-nickname";
+    this.dataAttribute = "data-nickname";
+    this.employees = document.querySelectorAll(`[${this.dataAttribute}]`);
     this.options = undefined;
     this.optionsWrapper = undefined;
     this.endpoint = endpoint;
-    this.width = width;
   }
 
   start = () => {
@@ -21,8 +20,9 @@ class SelectWidget {
   };
 
   showInput = (e) => {
+    e.stopPropagation();
     console.log("click");
-    if (e.target !== e.currentTarget) return;
+    console.log("click 2", e.currentTarget);
     this.isInputFocused = true;
     this.selectedEmployee = e.currentTarget;
     this.removeElementById("widget-input-wrapper");
@@ -42,16 +42,12 @@ class SelectWidget {
     );
     input.setAttribute("autocomplete", "off");
     input.style.width = "100%";
-    const nickname = this.selectedEmployee.getAttribute(this.dataAttributeName);
-    if (nickname) {
-      input.value = nickname;
-    }
     input.addEventListener("focusin", this.showOptions);
     input.addEventListener("input", this.filterOnPrint);
     this.selectedInput = input;
     div.appendChild(input);
     div.appendChild(options);
-    e.target.appendChild(div);
+    this.selectedEmployee.appendChild(div);
     input.focus();
   };
 
@@ -100,7 +96,7 @@ class SelectWidget {
   };
 
   async setNickname(option) {
-    const nickname = this.selectedEmployee.childNodes[0].nodeValue;
+    const nickname = this.selectedEmployee.getAttribute(this.dataAttribute);
     fetch(`${this.endpoint}/${option.textContent}`, {
       method: "POST",
       headers: {
@@ -115,10 +111,6 @@ class SelectWidget {
       })
       .catch((err) => console.log("error", err));
     this.selectedInput.value = option.textContent;
-    this.selectedEmployee.setAttribute(
-      this.dataAttributeName,
-      option.textContent
-    );
     this.selectedInput.style.display = "none";
     this.optionsWrapper.style.display = "none";
     this.optionsWrapper = null;
